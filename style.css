@@ -1,0 +1,225 @@
+/* --- Core Theme Configurations --- */
+:root {
+    --bg-main: #0f172a;       /* Deep slate background */
+    --bg-card: #1e293b;       /* Card background */
+    --bg-input: #334155;      /* Input fields background */
+    --accent-blue: #38bdf8;   /* Cyber blue highlight */
+    --accent-green: #34d399;  /* Emerald for balances/gains */
+    --text-main: #f8fafc;     /* Clean off-white */
+    --text-muted: #94a3b8;    /* Soft gray for labels */
+    --danger: #f87171;        /* Soft red for delete buttons */
+    --radius: 12px;           /* Modern rounded look */
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Global Resets --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- Main Layout Wrapper --- */
+.container {
+    background: var(--bg-card);
+    padding: 32px;
+    border-radius: var(--radius);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 
+                0 10px 10px -5px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 440px;
+    border: 1px solid #334155;
+    animation: fadeIn 0.5s ease-out;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+/* --- Dynamic Metrics Panel --- */
+.balance-container {
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border: 1px solid #334155;
+    border-left: 4px solid var(--accent-blue);
+    padding: 20px;
+    margin-bottom: 24px;
+    border-radius: var(--radius);
+    text-align: center;
+}
+
+.balance-container h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+}
+
+#total-amount {
+    color: var(--accent-green);
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+/* --- Form Fields Architecture --- */
+.form-control {
+    margin-bottom: 18px;
+}
+
+.form-control label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.form-control input, 
+.form-control select {
+    width: 100%;
+    padding: 12px 14px;
+    background-color: var(--bg-input);
+    border: 1px solid #475569;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    color: var(--text-main);
+    outline: none;
+    transition: var(--transition);
+}
+
+.form-control input::placeholder {
+    color: #64748b;
+}
+
+/* Input Focus Glow Animations */
+.form-control input:focus, 
+.form-control select:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+}
+
+/* Remove default arrows on number inputs */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* --- Submission Interactive Elements --- */
+.btn {
+    width: 100%;
+    padding: 14px;
+    background-color: var(--accent-blue);
+    color: #0f172a;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background-color: #7dd3fc;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* --- Dynamic Ledger / List Stream --- */
+h3 {
+    margin: 24px 0 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.list {
+    list-style-type: none;
+    max-height: 220px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+/* Custom Scrollbar for the list container */
+.list::-webkit-scrollbar {
+    width: 5px;
+}
+.list::-webkit-scrollbar-thumb {
+    background: var(--bg-input);
+    border-radius: 10px;
+}
+
+.expense-item {
+    background: #1e293b;
+    border: 1px solid #334155;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    border-radius: var(--radius);
+    animation: slideIn 0.3s ease-out;
+    transition: var(--transition);
+}
+
+.expense-item:hover {
+    border-color: #475569;
+    transform: translateX(2px);
+}
+
+.expense-item span small {
+    display: inline-block;
+    background: #334155;
+    color: var(--accent-blue);
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-left: 6px;
+    font-size: 0.75rem;
+}
+
+/* --- Destructive UI Action Assets --- */
+.delete-btn {
+    background: transparent;
+    color: var(--text-muted);
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.delete-btn:hover {
+    background: rgba(248, 113, 113, 0.15);
+    color: var(--danger);
+}
+
+/* --- Animation Frames --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}
